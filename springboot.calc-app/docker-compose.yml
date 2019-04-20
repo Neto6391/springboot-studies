@@ -1,0 +1,31 @@
+version: "3.1"
+services:
+  db-app:
+    container_name: db-demo
+    image: postgres:11.2-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_PASSWORD: demoapp
+    ports:
+      - "15432:5436"
+    restart: always
+    networks: 
+      - db-pg-app
+  db-front-app:
+    container_name: db-front-app
+    image: dpage/pgadmin4
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: neto.rodrigues6391@gmail.com 
+      PGADMIN_DEFAULT_PASSWORD: demoapp
+    ports:
+      - "16543:80"
+    depends_on:
+      - db-app
+    networks:
+      - db-pg-app
+volumes:
+  postgres-data:
+networks: 
+  db-pg-app:
+    driver: bridge
