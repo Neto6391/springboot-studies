@@ -17,7 +17,6 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<kotlin.version>1.2.71</kotlin.version>
-		<start-class>com.spring.calc.SpringCalc.SpringcalcApplicationKt</start-class>
 	</properties>
 
 	<dependencies>
@@ -56,12 +55,8 @@
 			<plugin>
 				<groupId>org.jetbrains.kotlin</groupId>
 				<artifactId>kotlin-maven-plugin</artifactId>
-				
-				<!-- <configuration>
-				</configuration> -->
 
 				<configuration>
-					<mainClass>${start-class}</mainClass>
 					<args>
 						<arg>-Xjsr305=strict</arg>
 					</args>

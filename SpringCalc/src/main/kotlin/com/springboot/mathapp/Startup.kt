@@ -1,14 +1,13 @@
-package com.spring.calc.SpringCalc
+package com.springboot.mathapp
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 
 @SpringBootApplication
-open class SpringcalcApplication {
+class Startup
 
 	fun main(args: Array<String>) {
-		SpringApplication.run(SpringcalcApplication::class.java, *args) 
+		SpringApplication.run(Startup::class.java, *args)
 	}
 
-}
