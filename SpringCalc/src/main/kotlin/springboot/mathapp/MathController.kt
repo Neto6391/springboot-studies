@@ -1,5 +1,6 @@
-package com.springboot.mathapp
+package springboot.mathapp
 
+import mathapp.exception.UnsupportedMathOperationException
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
@@ -12,7 +13,7 @@ class MathController {
 	@RequestMapping(value = ["/sum/{numberOne}/{numberTwo}"], method = arrayOf(RequestMethod.GET))
 	fun sum(@PathVariable(value="numberOne")  numberOne:String, @PathVariable(value="numberTwo")  numberTwo:String):Double {
 		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) {
-			throw Exception()
+			throw UnsupportedMathOperationException("Please Set a Numeric Value")
 		}
 		val sum: Double = convertToDouble(numberOne) + convertToDouble(numberTwo)
 		return sum

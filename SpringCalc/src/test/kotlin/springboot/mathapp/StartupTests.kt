@@ -1,4 +1,4 @@
-package com.springboot.mathapp
+package springboot.mathapp
 
 import org.junit.Test
 import org.junit.runner.RunWith
