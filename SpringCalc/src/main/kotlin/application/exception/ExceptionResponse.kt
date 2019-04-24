@@ -1,4 +1,4 @@
-package mathapp.exception
+package application.exception
 
 import java.util.*
 

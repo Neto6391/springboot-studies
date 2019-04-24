@@ -1,7 +1,7 @@
 package exception.handler
 
-import mathapp.exception.ExceptionResponse
-import mathapp.exception.UnsupportedMathOperationException
+import application.exception.ExceptionResponse
+import application.exception.UnsupportedMathOperationException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -15,7 +15,7 @@ import java.util.*
 class ControllerAdviceRequestError: ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(value = [(Exception::class)])
-    fun handleAllExceptions(ex:UnsupportedMathOperationException, request:WebRequest) : ResponseEntity<ExceptionResponse>{
+    fun handleAllExceptions(ex: UnsupportedMathOperationException, request:WebRequest) : ResponseEntity<ExceptionResponse>{
         val exceptionResponse = ExceptionResponse(
                 Date(),
                 ex.message,
@@ -25,7 +25,7 @@ class ControllerAdviceRequestError: ResponseEntityExceptionHandler() {
     }
 
     @ExceptionHandler(value = [(UnsupportedMathOperationException::class)])
-    fun handleBadRequestExceptions(ex:UnsupportedMathOperationException, request:WebRequest) : ResponseEntity<ExceptionResponse>{
+    fun handleBadRequestExceptions(ex: UnsupportedMathOperationException, request:WebRequest) : ResponseEntity<ExceptionResponse>{
         val exceptionResponse = ExceptionResponse(
                 Date(),
                 ex.message,
