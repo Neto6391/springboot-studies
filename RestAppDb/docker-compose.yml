@@ -1,0 +1,32 @@
+version: "3.1"
+services:
+  db-app:
+    container_name: db-demo
+    image: mysql:8.0
+    volumes:
+      - postgres-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: restApp
+    ports:
+      - "15432:3306"
+    restart: always
+    networks: 
+      - db-mysql-app
+  db-front-app:
+    container_name: db-front-app
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=db-app
+    ports:
+      - "16543:80"
+    depends_on:
+      - db-app
+    networks:
+      - db-mysql-app
+volumes:
+  postgres-data:
+networks:
+  db-mysql-app:
+    driver: bridge
+  app-backend-nt:
+    driver: bridge
