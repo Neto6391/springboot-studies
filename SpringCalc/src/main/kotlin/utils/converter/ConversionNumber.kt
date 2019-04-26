@@ -2,6 +2,7 @@ package utils.converter
 
 open class ConversionNumber {
 
+
     private fun isNull(strNumber: String):Boolean {
         if(strNumber == null) return true
         return false

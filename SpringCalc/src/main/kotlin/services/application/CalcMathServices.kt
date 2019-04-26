@@ -1,9 +1,11 @@
-package calc.utils
+package services.application
 
+import org.springframework.stereotype.Service
 import utils.converter.ConversionNumber
 import kotlin.math.sqrt
 
-open class CalcMath : ConversionNumber() {
+@Service
+class CalcMathServices : ConversionNumber() {
 
     fun sumNumbers(numberOne:String, numberTwo:String):Double {
         return convertToDouble(numberOne) + convertToDouble(numberTwo)
@@ -25,7 +27,7 @@ open class CalcMath : ConversionNumber() {
         return (convertToDouble(numberOne) + convertToDouble(numberTwo))/2
     }
 
-    fun squareRootNumbers(numberOne:String):Double {
-        return sqrt(convertToDouble(numberOne))
+    fun squareRootNumbers(number:String):Double {
+        return sqrt(convertToDouble(number))
     }
 }
