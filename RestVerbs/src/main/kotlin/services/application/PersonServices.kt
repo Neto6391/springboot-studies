@@ -7,8 +7,20 @@ import java.util.concurrent.atomic.AtomicLong
 @Service
 class PersonServices {
 
-    //ID DATABASE
+    //ID_COUNTER DATABASE
     private val counter = AtomicLong()
+
+    fun create(person:Person):Person {
+        return person
+    }
+
+    fun update(person:Person):Person {
+        return person
+    }
+
+    fun delete(id:String) {
+
+    }
 
     fun findById(id:String):Person {
         val person = Person()
