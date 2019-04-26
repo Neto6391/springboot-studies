@@ -1,6 +1,5 @@
 package controllers.application
 
-import exception.handler.ControllerAdviceRequestError
 import models.aplication.Person
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.ComponentScan
@@ -11,7 +10,7 @@ import services.application.PersonServices
 @RestController
 @RequestMapping("/person")
 @ComponentScan("services.application", "models.application")
-class PersonController : ControllerAdviceRequestError() {
+class PersonController {
 
 	@Autowired
 	lateinit private var services:PersonServices
