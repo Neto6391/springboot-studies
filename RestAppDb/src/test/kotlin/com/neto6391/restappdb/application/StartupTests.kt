@@ -1,4 +1,4 @@
-package springboot.application
+package com.neto6391.restappdb.application
 
 import org.junit.Test
 import org.junit.runner.RunWith

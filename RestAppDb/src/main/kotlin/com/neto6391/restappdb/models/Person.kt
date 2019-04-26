@@ -1,4 +1,4 @@
-package models.aplication
+package com.neto6391.restappdb.models
 
 import java.io.Serializable
 import javax.persistence.*

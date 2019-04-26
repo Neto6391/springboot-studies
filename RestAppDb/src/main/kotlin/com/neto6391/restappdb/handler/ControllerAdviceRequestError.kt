@@ -1,7 +1,6 @@
-package handler.exception
+package com.neto6391.restappdb.handler
 
-import exception.application.ExceptionResponse
-import exception.application.ResourceNotFoundException
+import com.neto6391.restappdb.exceptions.ResourceNotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice

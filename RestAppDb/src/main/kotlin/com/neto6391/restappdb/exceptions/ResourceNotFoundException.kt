@@ -1,4 +1,4 @@
-package exception.application
+package com.neto6391.restappdb.exceptions
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ResponseStatus
