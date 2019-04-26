@@ -7,6 +7,7 @@ services:
       - postgres-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: restApp
+      MYSQL_DATABASE: rest_app
     ports:
       - "15432:3306"
     restart: always
