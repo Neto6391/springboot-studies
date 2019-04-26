@@ -8,10 +8,10 @@
 		<version>2.1.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.spring.calc</groupId>
-	<artifactId>SpringCalc</artifactId>
+	<groupId>com.spring.restappdb</groupId>
+	<artifactId>RestAppDb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springcalc</name>
+	<name>restappdb</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -41,6 +41,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 	</dependencies>
 

@@ -1,35 +1,26 @@
 package services.application
 
+import exception.application.ResourceNotFoundException
 import models.aplication.Person
+import org.springframework.beans.factory.annotation.Autowired
+import repository.application.PersonRespository
 import org.springframework.stereotype.Service
-import java.util.concurrent.atomic.AtomicLong
 
 @Service
 class PersonServices {
 
-    //ID_COUNTER DATABASE
-    private val counter = AtomicLong()
+    @Autowired
+    lateinit var repository:PersonRespository
 
     fun create(person:Person):Person {
-        return person
+        return repository.save(person)
     }
 
-    fun update(person:Person):Person {
-        return person
-    }
 
-    fun delete(id:String) {
-
-    }
-
-    fun findById(id:String):Person {
-        val person = Person()
-        person.id = counter.incrementAndGet()
-        person.firstName = "Neto"
-        person.lastName = "6391"
-        person.address = "City - State - Country"
-        person.gender = "Male"
-        return person
+    fun findById(id:Long):Person {
+        return repository.findById(id).orElseThrow(fun(){
+            ResourceNotFoundException("No records found for this ID")
+        })
     }
 
     fun findAll():List<Person> {
@@ -39,6 +30,14 @@ class PersonServices {
             persons.add(person)
         }
         return persons
+    }
+
+    fun update(person:Person):Person {
+        return person
+    }
+
+    fun delete(id:String) {
+
     }
 
     private fun mockPerson(i:Int): Person {
