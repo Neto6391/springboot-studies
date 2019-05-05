@@ -10,31 +10,31 @@ import org.springframework.http.ResponseEntity
 class PersonController (private val services: PersonServices) {
 
 
-//	@GetMapping
-//	fun findAll():List<PersonVO> {
-//		return services.findAll()
-//	}
-//
-//	@GetMapping("/{id}")
-//	fun findById(@PathVariable(value="id")  id:Long): PersonVO {
-//			return services.findById(id)
-//	}
-//
-//	@PostMapping
-//	fun create(@RequestBody person: PersonVO): PersonVO {
-//		return services.create(person)
-//	}
-//
-//	@PutMapping
-//	fun update(@RequestBody person: PersonVO): PersonVO {
-//		return services.update(person)
-//	}
-//
-//	@DeleteMapping("/{id}")
-//	fun delete(@PathVariable(value="id")  id:Long):ResponseEntity<PersonVO> {
-//		services.delete(id)
-//		return ResponseEntity.ok().build()
-//	}
+	@GetMapping
+	fun findAll():List<PersonVO> {
+		return services.findAll()
+	}
+
+	@GetMapping("/{id}")
+	fun findById(@PathVariable(value="id")  id:Long): PersonVO {
+			return services.findById(id)
+	}
+
+	@PostMapping
+	fun create(@RequestBody person: PersonVO): PersonVO {
+		return services.create(person)
+	}
+
+	@PutMapping
+	fun update(@RequestBody person: PersonVO): PersonVO {
+		return services.update(person)
+	}
+
+	@DeleteMapping("/{id}")
+	fun delete(@PathVariable(value="id")  id:Long):ResponseEntity<PersonVO> {
+		services.delete(id)
+		return ResponseEntity.ok().build()
+	}
 
 }
 
