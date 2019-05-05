@@ -1,0 +1,31 @@
+version: "3.1"
+services:
+  db-mysql-app:
+    container_name: db-mysql-app
+    image: mysql:8.0
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: restApp
+      MYSQL_DATABASE: rest_app
+    ports:
+      - "15532:3306"
+    restart: always
+    networks: 
+      - db-mysql-app
+  db-front-mysql-app:
+    container_name: db-front-mysql-app
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=db-app
+    ports:
+      - "16643:80"
+    depends_on:
+      - db-mysql-app
+    networks:
+      - db-mysql-app
+volumes:
+  mysql-data:
+networks:
+  db-mysql-app:
+    driver: bridge
