@@ -1,6 +1,7 @@
 package com.neto6391.restappdb.controllers
 
 import com.neto6391.restappdb.data.vo.PersonVO
+import com.neto6391.restappdb.data.vo.v2.PersonVOV2
 import org.springframework.web.bind.annotation.*
 import com.neto6391.restappdb.services.PersonServices
 import org.springframework.http.ResponseEntity
@@ -23,6 +24,11 @@ class PersonController (private val services: PersonServices) {
 	@PostMapping
 	fun create(@RequestBody person: PersonVO): PersonVO {
 		return services.create(person)
+	}
+
+	@PostMapping
+	fun createV2(@RequestBody person: PersonVOV2): PersonVOV2 {
+		return services.createV2(person)
 	}
 
 	@PutMapping

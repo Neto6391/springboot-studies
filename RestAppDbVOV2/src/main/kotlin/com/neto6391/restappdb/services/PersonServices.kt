@@ -4,7 +4,7 @@ import com.neto6391.restappdb.converter.AdapterConverter
 import com.neto6391.restappdb.exceptions.ResourceNotFoundException
 import com.neto6391.restappdb.data.model.Person
 import com.neto6391.restappdb.data.vo.PersonVO
-import org.springframework.beans.factory.annotation.Autowired
+import com.neto6391.restappdb.data.vo.v2.PersonVOV2
 import com.neto6391.restappdb.repositories.PersonRespository
 import org.springframework.stereotype.Service
 
@@ -14,6 +14,12 @@ class PersonServices(private val repository: PersonRespository) {
     fun create(person: PersonVO): PersonVO {
         val entity = AdapterConverter.parseObject(person, Person::class.java)
         val vo = AdapterConverter.parseObject(repository.save(entity), PersonVO::class.java)
+        return vo
+    }
+
+    fun createV2(person: PersonVOV2): PersonVOV2 {
+        val entity = AdapterConverter.parseObject(person, Person::class.java)
+        val vo = AdapterConverter.parseObject(repository.save(entity), PersonVOV2::class.java)
         return vo
     }
 
