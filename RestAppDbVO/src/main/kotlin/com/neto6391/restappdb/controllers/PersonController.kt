@@ -10,22 +10,28 @@ import org.springframework.http.ResponseEntity
 class PersonController (private val services: PersonServices) {
 
 
-	@GetMapping
+	@GetMapping(produces = ["application/json", "application/xml"])
 	fun findAll():List<PersonVO> {
 		return services.findAll()
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/{id}", produces = ["application/json", "application/xml"])
 	fun findById(@PathVariable(value="id")  id:Long): PersonVO {
 			return services.findById(id)
 	}
 
-	@PostMapping
+	@PostMapping(
+			produces = ["application/json", "application/xml"],
+			consumes = ["application/json", "application/xml"]
+	)
 	fun create(@RequestBody person: PersonVO): PersonVO {
 		return services.create(person)
 	}
 
-	@PutMapping
+	@PutMapping(
+			produces = ["application/json", "application/xml"],
+			consumes = ["application/json", "application/xml"]
+	)
 	fun update(@RequestBody person: PersonVO): PersonVO {
 		return services.update(person)
 	}
