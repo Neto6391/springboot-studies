@@ -3,12 +3,12 @@ package com.neto6391.restappdb.data.vo.v2
 import java.io.Serializable
 import java.util.*
 
-class PersonVOV2(var id:Long,
-                 var firstName:String,
-                 var lastName:String,
-                 var address:String,
-                 var gender:String,
-                 var birth:Date
+class PersonVOV2(var id:Long = 0,
+                 var firstName:String = "",
+                 var lastName:String = "",
+                 var address:String = "",
+                 var gender:String = "",
+                 var birthDay:Date = Date()
 ) : Serializable {
 
     override fun equals(other: Any?): Boolean {
@@ -22,7 +22,7 @@ class PersonVOV2(var id:Long,
         if (lastName != other.lastName) return false
         if (address != other.address) return false
         if (gender != other.gender) return false
-        if (birth != other.birth) return false
+        if (birthDay != other.birthDay) return false
 
         return true
     }
@@ -33,7 +33,7 @@ class PersonVOV2(var id:Long,
         result = 31 * result + lastName.hashCode()
         result = 31 * result + address.hashCode()
         result = 31 * result + gender.hashCode()
-        result = 31 * result + birth.hashCode()
+        result = 31 * result + birthDay.hashCode()
         return result
     }
 }

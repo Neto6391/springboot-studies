@@ -1,15 +1,19 @@
 package com.neto6391.restappdb.services
 
 import com.neto6391.restappdb.converter.AdapterConverter
+import com.neto6391.restappdb.converter.custom.PersonConverter
 import com.neto6391.restappdb.exceptions.ResourceNotFoundException
 import com.neto6391.restappdb.data.model.Person
-import com.neto6391.restappdb.data.vo.PersonVO
+import com.neto6391.restappdb.data.vo.v1.PersonVO
 import com.neto6391.restappdb.data.vo.v2.PersonVOV2
 import com.neto6391.restappdb.repositories.PersonRespository
 import org.springframework.stereotype.Service
 
 @Service
-class PersonServices(private val repository: PersonRespository) {
+class PersonServices(
+        private val repository: PersonRespository,
+        private val converter: PersonConverter
+) {
 
     fun create(person: PersonVO): PersonVO {
         val entity = AdapterConverter.parseObject(person, Person::class.java)
@@ -17,9 +21,10 @@ class PersonServices(private val repository: PersonRespository) {
         return vo
     }
 
+    //The idea of keep this Endpoint in V2 up until time validity is over
     fun createV2(person: PersonVOV2): PersonVOV2 {
-        val entity = AdapterConverter.parseObject(person, Person::class.java)
-        val vo = AdapterConverter.parseObject(repository.save(entity), PersonVOV2::class.java)
+        val entity = converter.convertEntityVoToEntity(person)
+        val vo = converter.convertEntityToVo(repository.save(entity))
         return vo
     }
 
