@@ -7,7 +7,7 @@
 
 ## Bug Container PHPMYADMIN not loging up in root 'user' Fix
 
-1 - docker exec -it db-demo bash
+1 - docker exec -it db-mysql-app bash
 2 - mysql -u root -prestApp
 3 - ALTER USER root IDENTIFIED WITH mysql_native_password BY 'restApp';
 4 - exit

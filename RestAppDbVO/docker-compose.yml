@@ -17,7 +17,7 @@ services:
     container_name: db-front-mysql-app
     image: phpmyadmin/phpmyadmin
     environment:
-      - PMA_HOST=db-app
+      - PMA_HOST=db-mysql-app
     ports:
       - "16643:80"
     depends_on:

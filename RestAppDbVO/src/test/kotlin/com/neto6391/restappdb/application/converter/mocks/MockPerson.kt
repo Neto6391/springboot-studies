@@ -1,7 +1,7 @@
 package com.neto6391.restappdb.application.converter.mocks
 
 import com.neto6391.restappdb.data.model.Person
-import com.neto6391.restappdb.data.vo.PersonVO
+import com.neto6391.restappdb.data.vo.v1.PersonVO
 
 class MockPerson{
 
@@ -9,7 +9,7 @@ class MockPerson{
         return mockEntity(0)
     }
 
-    fun mockVO():PersonVO {
+    fun mockVO(): PersonVO {
         return mockVO(0)
     }
 

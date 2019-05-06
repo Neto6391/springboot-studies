@@ -2,7 +2,7 @@ package com.neto6391.restappdb.application.converter
 
 import com.neto6391.restappdb.application.converter.mocks.MockPerson
 import com.neto6391.restappdb.converter.AdapterConverter
-import com.neto6391.restappdb.data.vo.PersonVO
+import com.neto6391.restappdb.data.vo.v1.PersonVO
 import org.junit.Assert
 import com.neto6391.restappdb.data.model.Person
 import org.junit.Before
@@ -20,7 +20,7 @@ class AdapterConvertTest {
 
     @Test
     fun parseEntityToVOTest() {
-        var output:PersonVO = AdapterConverter.parseObject(inputObject.mockEntity(), PersonVO::class.java)
+        var output: PersonVO = AdapterConverter.parseObject(inputObject.mockEntity(), PersonVO::class.java)
         Assert.assertEquals((0L).toLong(), output.id)
         Assert.assertEquals("First Name Test0", output.firstName)
         Assert.assertEquals("Last Name Test0", output.lastName)

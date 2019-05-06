@@ -1,6 +1,6 @@
 package com.neto6391.restappdb.controllers
 
-import com.neto6391.restappdb.data.vo.PersonVO
+import com.neto6391.restappdb.data.vo.v1.PersonVO
 import org.springframework.web.bind.annotation.*
 import com.neto6391.restappdb.services.PersonServices
 import org.springframework.http.ResponseEntity
