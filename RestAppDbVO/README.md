@@ -1,9 +1,15 @@
+## Require Tecnologies
+1- JAVA JDK 11
+2- maven
+3- Docker && Docker-compose
+
 ## Instructions For Run Containers in Docker
 
-1 -inside in project path
-2 - docker-compose up --build
-3 - docker-compose stop
-4 - Solve Fix Bug, if you use phpmyadmin  
+1- inside in project path
+2- docker-compose up --build
+3- execute in path root project 'mvn flyway:migrate'
+4- execute in path root 'mvn clean package spring-boot:run'
+5- Solve Fix Bug, if you use phpmyadmin
 
 ## Bug Container PHPMYADMIN not loging up in root 'user' Fix
 
