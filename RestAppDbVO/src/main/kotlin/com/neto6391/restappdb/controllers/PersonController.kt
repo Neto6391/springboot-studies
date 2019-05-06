@@ -6,7 +6,7 @@ import com.neto6391.restappdb.services.PersonServices
 import org.springframework.http.ResponseEntity
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 class PersonController (private val services: PersonServices) {
 
 
