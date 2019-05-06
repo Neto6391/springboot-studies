@@ -1,6 +1,5 @@
 package com.neto6391.restappdb.data.vo.v1
 
-import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import java.io.Serializable
@@ -17,7 +16,7 @@ class PersonVO : Serializable {
     var lastName:String = ""
     var address:String = ""
 
-    @JsonIgnore
+
     var gender:String = ""
 
     override fun equals(other: Any?): Boolean {

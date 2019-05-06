@@ -12,6 +12,7 @@ class PersonServices(private val repository: PersonRespository) {
 
     fun create(person: PersonVO): PersonVO {
         val entity = AdapterConverter.parseObject(person, Person::class.java)
+
         val vo = AdapterConverter.parseObject(repository.save(entity), PersonVO::class.java)
         return vo
     }
