@@ -30,7 +30,7 @@ class PersonServices(private val repository: PersonRespository) {
 
 
     fun update(person: PersonVO): PersonVO {
-        var entity = repository.findById(person.id).orElseThrow {
+        var entity = repository.findById(person.key).orElseThrow {
             ResourceNotFoundException("No records found for this ID")
         }
 

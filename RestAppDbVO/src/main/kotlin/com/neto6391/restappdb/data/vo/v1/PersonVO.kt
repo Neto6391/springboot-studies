@@ -1,13 +1,14 @@
 package com.neto6391.restappdb.data.vo.v1
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonPropertyOrder
+import com.github.dozermapper.core.Mapping
+import org.springframework.hateoas.ResourceSupport
 import java.io.Serializable
 
-@JsonPropertyOrder("id","address","first_name","last_name","gender")
-class PersonVO : Serializable {
+class PersonVO : ResourceSupport(), Serializable {
 
-    var id:Long = 0
+    @Mapping("id")
+    var key:Long = 0
 
     @JsonProperty("first_name")
     var firstName:String = ""
@@ -18,14 +19,14 @@ class PersonVO : Serializable {
 
 
     var gender:String = ""
-
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
+        if (!super.equals(other)) return false
 
         other as PersonVO
 
-        if (id != other.id) return false
+        if (key != other.key) return false
         if (firstName != other.firstName) return false
         if (lastName != other.lastName) return false
         if (address != other.address) return false
@@ -35,7 +36,8 @@ class PersonVO : Serializable {
     }
 
     override fun hashCode(): Int {
-        var result = id.hashCode()
+        var result = super.hashCode()
+        result = 31 * result + key.hashCode()
         result = 31 * result + firstName.hashCode()
         result = 31 * result + lastName.hashCode()
         result = 31 * result + address.hashCode()

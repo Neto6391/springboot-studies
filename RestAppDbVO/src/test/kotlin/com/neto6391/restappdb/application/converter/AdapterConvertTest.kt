@@ -21,7 +21,7 @@ class AdapterConvertTest {
     @Test
     fun parseEntityToVOTest() {
         var output: PersonVO = AdapterConverter.parseObject(inputObject.mockEntity(), PersonVO::class.java)
-        Assert.assertEquals((0L).toLong(), output.id)
+        Assert.assertEquals((0L).toLong(), output.key)
         Assert.assertEquals("First Name Test0", output.firstName)
         Assert.assertEquals("Last Name Test0", output.lastName)
         Assert.assertEquals("Address Test0", output.address)
@@ -33,7 +33,7 @@ class AdapterConvertTest {
         var outputList:List<PersonVO> = AdapterConverter.parseListObjects(inputObject.mockEntityList(), PersonVO::class.java)
         val outputZero = outputList.get(0)
 
-        Assert.assertEquals((0L).toLong(), outputZero.id)
+        Assert.assertEquals((0L).toLong(), outputZero.key)
         Assert.assertEquals("First Name Test0", outputZero.firstName)
         Assert.assertEquals("Last Name Test0", outputZero.lastName)
         Assert.assertEquals("Address Test0", outputZero.address)
@@ -41,7 +41,7 @@ class AdapterConvertTest {
 
         val outputSeven = outputList.get(7)
 
-        Assert.assertEquals((7L).toLong(), outputSeven.id)
+        Assert.assertEquals((7L).toLong(), outputSeven.key)
         Assert.assertEquals("First Name Test7", outputSeven.firstName)
         Assert.assertEquals("Last Name Test7", outputSeven.lastName)
         Assert.assertEquals("Address Test7", outputSeven.address)
@@ -49,7 +49,7 @@ class AdapterConvertTest {
 
         val outputTwelve = outputList.get(12)
 
-        Assert.assertEquals((12L).toLong(), outputTwelve.id)
+        Assert.assertEquals((12L).toLong(), outputTwelve.key)
         Assert.assertEquals("First Name Test12", outputTwelve.firstName)
         Assert.assertEquals("Last Name Test12", outputTwelve.lastName)
         Assert.assertEquals("Address Test12", outputTwelve.address)
