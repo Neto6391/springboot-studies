@@ -1,13 +1,16 @@
 package com.neto6391.restappdb.data.vo.v1
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import com.github.dozermapper.core.Mapping
 import org.springframework.hateoas.ResourceSupport
 import java.io.Serializable
 
-class PersonVO : ResourceSupport(), Serializable {
+@JsonPropertyOrder("id", "first_name", "last_name", "address", "gender")
+open class PersonVO : ResourceSupport(), Serializable {
 
     @Mapping("id")
+    @JsonProperty("id")
     var key:Long = 0
 
     @JsonProperty("first_name")

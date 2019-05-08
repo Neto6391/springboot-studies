@@ -14,7 +14,13 @@ class PersonController (private val service: PersonServices) {
 
 	@GetMapping(produces = ["application/json", "application/xml", "application/x-yaml"])
 	fun findAll():List<PersonVO> {
-		return service.findAll()
+		val persons:List<PersonVO> = service.findAll()
+		persons.map { p ->
+			p.add(
+					linkTo(methodOn(PersonController::class.java).findById(p.key)).withSelfRel()
+			)
+		}
+		return persons
 	}
 
 	@GetMapping("/{id}", produces = ["application/json", "application/xml", "application/x-yaml"])
@@ -29,7 +35,9 @@ class PersonController (private val service: PersonServices) {
 			consumes = ["application/json", "application/xml", "application/x-yaml"]
 	)
 	fun create(@RequestBody person: PersonVO): PersonVO {
-		return service.create(person)
+		val personVo = service.create(person)
+		personVo.add(linkTo(methodOn(PersonController::class.java).findById(personVo.key)).withSelfRel())
+		return personVo
 	}
 
 	@PutMapping(
@@ -37,7 +45,9 @@ class PersonController (private val service: PersonServices) {
 			consumes = ["application/json", "application/xml", "application/x-yaml"]
 	)
 	fun update(@RequestBody person: PersonVO): PersonVO {
-		return service.update(person)
+		val personVo = service.update(person)
+		personVo.add(linkTo(methodOn(PersonController::class.java).findById(personVo.key)).withSelfRel())
+		return personVo
 	}
 
 	@DeleteMapping("/{id}")
