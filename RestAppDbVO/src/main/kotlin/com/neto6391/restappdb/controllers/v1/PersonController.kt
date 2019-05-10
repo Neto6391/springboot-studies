@@ -1,4 +1,4 @@
-package com.neto6391.restappdb.controllers
+package com.neto6391.restappdb.controllers.v1
 
 import com.neto6391.restappdb.data.vo.v1.PersonVO
 import org.springframework.web.bind.annotation.*
@@ -8,7 +8,7 @@ import org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn
 import org.springframework.http.ResponseEntity
 
 @RestController
-@RequestMapping("/api/person/v1")
+@RequestMapping("/api/persons/v1")
 class PersonController (private val service: PersonServices) {
 
 
