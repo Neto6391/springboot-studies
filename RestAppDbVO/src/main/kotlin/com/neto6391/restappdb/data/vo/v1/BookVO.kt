@@ -1,12 +1,13 @@
 package com.neto6391.restappdb.data.vo.v1
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import com.github.dozermapper.core.Mapping
 import org.springframework.hateoas.ResourceSupport
 import java.io.Serializable
 import java.util.*
 
-
+@JsonPropertyOrder("id", "title", "author", "launch_date", "price")
 open class BookVO : ResourceSupport(), Serializable {
 
     @Mapping("id")
