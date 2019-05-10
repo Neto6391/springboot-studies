@@ -9,7 +9,7 @@ import org.junit.Before
 import org.junit.Test
 
 
-class AdapterConvertPersonTest {
+class AdapterConvertPersonTest : AdapterConvert {
 
     lateinit  var inputObject: MockPerson
 
@@ -19,7 +19,7 @@ class AdapterConvertPersonTest {
     }
 
     @Test
-    fun parseEntityToVOTest() {
+    override fun parseEntityToVOTest() {
         var output: PersonVO = AdapterConverter.parseObject(inputObject.mockEntity(), PersonVO::class.java)
         Assert.assertEquals((0L).toLong(), output.key)
         Assert.assertEquals("First Name Test0", output.firstName)
@@ -29,7 +29,7 @@ class AdapterConvertPersonTest {
     }
 
     @Test
-    fun parseEntityListToToVOListTest() {
+    override fun parseEntityListToToVOListTest() {
         var outputList:List<PersonVO> = AdapterConverter.parseListObjects(inputObject.mockEntityList(), PersonVO::class.java)
         val outputZero = outputList.get(0)
 
@@ -57,7 +57,7 @@ class AdapterConvertPersonTest {
     }
 
     @Test
-    fun parseVOToEntityTest() {
+    override fun parseVOToEntityTest() {
         val output = AdapterConverter.parseObject(inputObject.mockVO(), Person::class.java)
         Assert.assertEquals(java.lang.Long.valueOf(0L), output.id)
         Assert.assertEquals("First Name Test0", output.firstName)
@@ -67,7 +67,7 @@ class AdapterConvertPersonTest {
     }
 
     @Test
-    fun parserVOListToEntityListTest() {
+    override fun parserVOListToEntityListTest() {
         val outputList = AdapterConverter.parseListObjects(inputObject.mockVOList(), Person::class.java)
         val outputZero = outputList.get(0)
 

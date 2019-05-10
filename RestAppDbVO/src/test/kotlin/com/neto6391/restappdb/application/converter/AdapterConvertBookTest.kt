@@ -9,7 +9,7 @@ import org.junit.Before
 import org.junit.Test
 import java.util.*
 
-class AdapterConvertBookTest {
+class AdapterConvertBookTest : AdapterConvert {
 
     lateinit  var inputObject: MockBook
 
@@ -19,7 +19,7 @@ class AdapterConvertBookTest {
     }
 
     @Test
-    fun parseEntityToVOTest() {
+    override fun parseEntityToVOTest() {
         var output: BookVO = AdapterConverter.parseObject(inputObject.mockEntity(), BookVO::class.java)
         Assert.assertEquals((0L).toLong(), output.key)
         Assert.assertEquals("Title Test0", output.title)
@@ -30,7 +30,7 @@ class AdapterConvertBookTest {
     }
 
     @Test
-    fun parseEntityListToToVOListTest() {
+    override fun parseEntityListToToVOListTest() {
         var outputList:List<BookVO> = AdapterConverter.parseListObjects(inputObject.mockEntityList(), BookVO::class.java)
         val outputZero = outputList.get(0)
 
@@ -58,7 +58,7 @@ class AdapterConvertBookTest {
     }
 
     @Test
-    fun parseVOToEntityTest() {
+    override fun parseVOToEntityTest() {
         val output = AdapterConverter.parseObject(inputObject.mockVO(), Book::class.java)
         Assert.assertEquals((0L).toLong(), output.id)
         Assert.assertEquals("Title Test0", output.title)
@@ -68,7 +68,7 @@ class AdapterConvertBookTest {
     }
 
     @Test
-    fun parserVOListToEntityListTest() {
+    override fun parserVOListToEntityListTest() {
         val outputList = AdapterConverter.parseListObjects(inputObject.mockVOList(), Book::class.java)
         val outputZero = outputList.get(0)
 
