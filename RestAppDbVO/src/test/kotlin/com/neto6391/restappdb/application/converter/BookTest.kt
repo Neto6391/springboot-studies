@@ -9,7 +9,7 @@ import org.junit.Before
 import org.junit.Test
 import java.util.*
 
-class AdapterConvertBookTest : AdapterConvert {
+class BookTest : AdapterConvert {
 
     lateinit  var inputObject: MockBook
 

@@ -9,7 +9,7 @@ import org.junit.Before
 import org.junit.Test
 
 
-class AdapterConvertPersonTest : AdapterConvert {
+class PersonTest : AdapterConvert {
 
     lateinit  var inputObject: MockPerson
 
