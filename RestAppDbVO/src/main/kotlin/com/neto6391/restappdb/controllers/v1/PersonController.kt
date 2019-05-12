@@ -1,5 +1,6 @@
 package com.neto6391.restappdb.controllers.v1
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.neto6391.restappdb.data.vo.v1.PersonVO
 import org.springframework.web.bind.annotation.*
 import com.neto6391.restappdb.services.PersonServices
@@ -8,6 +9,7 @@ import io.swagger.annotations.ApiOperation
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn
 import org.springframework.http.ResponseEntity
+import kotlin.collections.HashMap
 
 @Api(value = "Person Endpoint", description = "Description for person", tags = ["PersonEndpoint"])
 @RestController
@@ -17,16 +19,24 @@ class PersonController (private val service: PersonServices) {
 
 	@ApiOperation(value = "Find all people")
 	@GetMapping(produces = ["application/json", "application/xml", "application/x-yaml"])
-	fun findAll():List<PersonVO> {
+	fun findAll():MutableList<Any> {
 		val persons:List<PersonVO> = service.findAll()
+		val personHash = HashMap<String, List<PersonVO>>()
+		val personArrayList = mutableListOf<Any>()
 		persons.map { p ->
 			p.add(
 					linkTo(methodOn(PersonController::class.java).findById(p.key)).withSelfRel()
 			)
 		}
-		return persons
+
+		personHash.put("persons", persons)
+		personArrayList.add(personHash)
+		return personArrayList
 	}
 
+
+	//How specific dominies can be access in this method of API CORS example 'localhost'
+//	@CrossOrigin(origins = ["http://localhost:8080"])
 	@ApiOperation(value = "Find a specific person by your ID")
 	@GetMapping("/{id}", produces = ["application/json", "application/xml", "application/x-yaml"])
 	fun findById(@PathVariable(value="id")  id:Long): PersonVO {
@@ -35,6 +45,7 @@ class PersonController (private val service: PersonServices) {
 		return personVo
 	}
 
+//	@CrossOrigin(origins = ["http://localhost:8080", "http://www.erudio.com.br"])
 	@ApiOperation(value = "Create a new person")
 	@PostMapping(
 			produces = ["application/json", "application/xml", "application/x-yaml"],

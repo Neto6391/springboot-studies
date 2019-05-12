@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.http.MediaType
 import org.springframework.http.converter.HttpMessageConverter
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer
+import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 @Configuration
@@ -12,6 +13,14 @@ class WebConfig : WebMvcConfigurer {
 
     private object companion {
         val APPLICATION_YML:MediaType = MediaType.valueOf("application/x-yaml")
+    }
+
+
+    override fun addCorsMappings(registry: CorsRegistry) {
+          //Enable Cors Domain for everyone WORKS FOR METHODS GET, POST, PUT, DELETE
+//        registry.addMapping("/**")
+        registry.addMapping("/**")
+                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT")
     }
 
     override fun extendMessageConverters(converters: MutableList<HttpMessageConverter<*>>) {

@@ -3,6 +3,7 @@ package com.neto6391.restappdb.data.vo.v1
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import com.github.dozermapper.core.Mapping
+import com.google.common.collect.ImmutableList
 import org.springframework.hateoas.ResourceSupport
 import java.io.Serializable
 
