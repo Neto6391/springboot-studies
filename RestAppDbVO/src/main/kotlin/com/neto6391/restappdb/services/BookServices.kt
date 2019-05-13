@@ -3,7 +3,7 @@ package com.neto6391.restappdb.services
 import com.neto6391.restappdb.converter.AdapterConverter
 import com.neto6391.restappdb.data.model.Book
 import com.neto6391.restappdb.data.vo.v1.BookVO
-import com.neto6391.restappdb.exceptions.ResourceNotFoundException
+import com.neto6391.restappdb.exceptions.exception.ResourceNotFoundException
 import com.neto6391.restappdb.repositories.BookRepository
 import org.springframework.stereotype.Service
 

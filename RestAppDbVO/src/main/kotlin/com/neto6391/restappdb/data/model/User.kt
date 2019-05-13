@@ -6,7 +6,7 @@ import java.io.Serializable
 import javax.persistence.*
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 open class User : UserDetails, Serializable {
 
     @Id
@@ -35,9 +35,10 @@ open class User : UserDetails, Serializable {
     @Column(name = "enabled")
     var enabled:Boolean = false
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_permission", joinColumns = [JoinColumn(name = "id_user")],
-            inverseJoinColumns = [JoinColumn(name = "id_permission")])
+    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @JoinTable(name = "user_permission",
+            joinColumns = arrayOf(JoinColumn(name = "id_user", referencedColumnName = "id")),
+            inverseJoinColumns = arrayOf(JoinColumn(name = "id_permission", referencedColumnName = "id")))
     var permissions:MutableList<Permission> = mutableListOf<Permission>()
 
 

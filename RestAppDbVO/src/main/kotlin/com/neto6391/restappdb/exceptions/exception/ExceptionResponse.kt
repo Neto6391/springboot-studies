@@ -1,4 +1,4 @@
-package com.neto6391.restappdb.handler
+package com.neto6391.restappdb.exceptions.exception
 
 import java.util.*
 
