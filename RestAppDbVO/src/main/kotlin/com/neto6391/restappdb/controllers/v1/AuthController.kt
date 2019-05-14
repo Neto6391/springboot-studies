@@ -1,14 +1,13 @@
 package com.neto6391.restappdb.controllers.v1
 
 import com.neto6391.restappdb.repositories.UserRespository
-import com.neto6391.restappdb.security.AccountCredentialsVO
+import com.neto6391.restappdb.data.vo.v1.AccountCredentialsVO
 import com.neto6391.restappdb.security.jwt.JwtTokenProvider
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.ResponseEntity
 import org.springframework.http.ResponseEntity.ok
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.BadCredentialsException
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -33,8 +32,6 @@ class AuthController(
         try {
             val username = data.username
             val password = data.password
-
-            authenticationManager.authenticate(UsernamePasswordAuthenticationToken(username, password))
 
             var user = repository.findByUsername(username)
             var token = ""

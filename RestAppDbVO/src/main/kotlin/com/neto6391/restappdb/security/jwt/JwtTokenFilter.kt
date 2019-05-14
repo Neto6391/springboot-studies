@@ -20,7 +20,6 @@ class JwtTokenFilter(private val tokenProvider:JwtTokenProvider) : GenericFilter
             if(auth != null) {
                 //Go in Context and set Authentication
                 SecurityContextHolder.getContext().authentication = auth
-                println(SecurityContextHolder.getContext().authentication.isAuthenticated)
             }
         }
 

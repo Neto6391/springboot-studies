@@ -45,7 +45,7 @@ class JwtTokenProvider(var userDetailsService:UserDetailsService) {
                 .compact()
     }
 
-    //Get token, found user present in token in userDetails read user and return authentincation of user name authentication token.
+    //Get token, found user present in token in userDetails read user and return authentication of user name authentication token.
     fun getAuthentication(token:String):Authentication {
         val userDetails:UserDetails = userDetailsService.loadUserByUsername(getUsername(token))
         return UsernamePasswordAuthenticationToken(userDetails,"", userDetails.authorities)

@@ -1,4 +1,4 @@
-package com.neto6391.restappdb.security
+package com.neto6391.restappdb.data.vo.v1
 
 import java.io.Serializable
 
