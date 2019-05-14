@@ -3,6 +3,7 @@ package com.neto6391.restappdb.controllers.v1
 import com.neto6391.restappdb.repositories.UserRespository
 import com.neto6391.restappdb.data.vo.v1.AccountCredentialsVO
 import com.neto6391.restappdb.security.jwt.JwtTokenProvider
+import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.ResponseEntity
 import org.springframework.http.ResponseEntity.ok
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
+@Api(tags = arrayOf("AuthenticationEndpoint"))
 @RestController
 @RequestMapping("/auth")
 class AuthController(
@@ -22,7 +24,7 @@ class AuthController(
         val repository:UserRespository
 ) {
 
-    @ApiOperation(value = "Authenticate a user by credentials")
+    @ApiOperation(value = "Authenticate a user and returns a token")
     @PostMapping(
             value = "/signin",
             produces = ["application/json", "application/xml", "application/x-yaml"],

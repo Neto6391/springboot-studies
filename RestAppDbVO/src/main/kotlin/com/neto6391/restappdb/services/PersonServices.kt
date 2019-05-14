@@ -6,6 +6,7 @@ import com.neto6391.restappdb.data.model.Person
 import com.neto6391.restappdb.data.vo.v1.PersonVO
 import com.neto6391.restappdb.repositories.PersonRespository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class PersonServices(private val repository: PersonRespository) {
@@ -39,6 +40,15 @@ class PersonServices(private val repository: PersonRespository) {
         entity.gender = person.gender
         val vo = AdapterConverter.parseObject(repository.save(entity), PersonVO::class.java)
         return vo
+    }
+
+    @Transactional
+    fun disablePerson(id:Long): PersonVO {
+        repository.disablePerson(id)
+        val entity = repository.findById(id).orElseThrow {
+            ResourceNotFoundException("No records found for this ID")
+        }
+        return AdapterConverter.parseObject(entity, PersonVO::class.java)
     }
 
     fun delete(id:Long) {

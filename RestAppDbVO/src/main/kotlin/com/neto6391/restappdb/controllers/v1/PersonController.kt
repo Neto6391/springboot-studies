@@ -68,6 +68,15 @@ class PersonController (private val service: PersonServices) {
 		return personVo
 	}
 
+	@ApiOperation(value = "Disable a specific person by your ID")
+	@PatchMapping("/{id}", produces = ["application/json", "application/xml", "application/x-yaml"])
+	fun disablePerson(@PathVariable(value="id")  id:Long): PersonVO {
+		val personVo = service.disablePerson(id)
+		personVo.add(linkTo(methodOn(PersonController::class.java).findById(id)).withSelfRel())
+		return personVo
+	}
+
+
 	@ApiOperation(value = "Delete a specific person by your ID")
 	@DeleteMapping("/{id}")
 	fun delete(@PathVariable(value="id")  id:Long):ResponseEntity<PersonVO> {

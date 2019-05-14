@@ -7,7 +7,7 @@ import com.google.common.collect.ImmutableList
 import org.springframework.hateoas.ResourceSupport
 import java.io.Serializable
 
-@JsonPropertyOrder("id", "first_name", "last_name", "address", "gender")
+@JsonPropertyOrder("id", "first_name", "last_name", "address", "gender", "enabled")
 open class PersonVO : ResourceSupport(), Serializable {
 
     @Mapping("id")
@@ -23,18 +23,19 @@ open class PersonVO : ResourceSupport(), Serializable {
 
 
     var gender:String = ""
+    var enabled:Boolean = true
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+        if (other !is PersonVO) return false
         if (!super.equals(other)) return false
-
-        other as PersonVO
 
         if (key != other.key) return false
         if (firstName != other.firstName) return false
         if (lastName != other.lastName) return false
         if (address != other.address) return false
         if (gender != other.gender) return false
+        if (enabled != other.enabled) return false
 
         return true
     }
@@ -46,6 +47,7 @@ open class PersonVO : ResourceSupport(), Serializable {
         result = 31 * result + lastName.hashCode()
         result = 31 * result + address.hashCode()
         result = 31 * result + gender.hashCode()
+        result = 31 * result + enabled.hashCode()
         return result
     }
 
