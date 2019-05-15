@@ -21,26 +21,22 @@ class UserValidator : Validator {
     override fun validate(o: Any, errors: Errors) {
         val user = o as User?
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty")
-        if (user != null) {
-            if (user.getUsername()!!.length < 6 || user.getUsername()!!.length > 32) {
-                errors.rejectValue("username", "Size.userForm.username")
-            }
 
-            if (userService!!.findByUsername(user.getUsername()!!) != null) {
-                errors.rejectValue("username", "Duplicate.userForm.username")
-            }
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty")
+        if ((user?.getUsername()!!.length < 6) || user.getUsername()!!.length > 32) {
+            errors.rejectValue("username", "Size.userForm.username")
+        }
+        if (userService?.findByUsername(user.getUsername()) != null) {
+            errors.rejectValue("username", "Duplicate.userForm.username")
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty")
-        if (user != null) {
-            if (user.getPassword()!!.length < 6 || user.getPassword()!!.length > 32) {
-                errors.rejectValue("password", "Size.userForm.password")
-            }
+        if (user?.getPassword()!!.length < 6 || user.getPassword()!!.length > 32) {
+            errors.rejectValue("password", "Size.userForm.password")
+        }
 
-            if (!user.getPasswordConfirm().equals(user.getPassword())) {
-                errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm")
-            }
+        if (!user.getPasswordConfirm().equals(user.getPassword())) {
+            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm")
         }
     }
 }

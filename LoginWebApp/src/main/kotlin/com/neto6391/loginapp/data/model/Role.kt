@@ -38,4 +38,24 @@ data class Role(
     fun setUsers(users:Set<User>) {
         this.users = users
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Role) return false
+
+        if (id != other.id) return false
+        if (name != other.name) return false
+        if (users != other.users) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = id?.hashCode() ?: 0
+        result = 31 * result + (name?.hashCode() ?: 0)
+        result = 31 * result + (users?.hashCode() ?: 0)
+        return result
+    }
+
+
 }
