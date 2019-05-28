@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.PhotoAppDiscoveryService.discovery
+package com.appsdeveloperblog.photoappdiscoveryservice.discovery
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

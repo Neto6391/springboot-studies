@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.PhotoAppDiscoveryService.discovery
+package com.appsdeveloperblog.photoapp.api.users
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
-class PhotAppDescoveryServiceApplicationTests {
+class PhotAppApiUsersApplicationTests {
 
 	@Test
 	fun contextLoads() {
