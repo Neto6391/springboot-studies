@@ -11,7 +11,7 @@ data class Role(
 
         private var name:String? = null,
 
-        @ManyToMany(mappedBy = "roles")
+        @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
         private var users: Set<User>? = null
 ) {
 

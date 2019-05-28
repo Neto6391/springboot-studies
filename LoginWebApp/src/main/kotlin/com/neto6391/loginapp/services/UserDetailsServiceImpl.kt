@@ -19,7 +19,6 @@ class UserDetailsServiceImpl : UserDetailsService {
     @Transactional(readOnly = true)
     override fun loadUserByUsername(username: String?): UserDetails? {
         val user = userRepository?.findByUsername(username)
-
         val grantedAuthorities = HashSet<GrantedAuthority>()
         if (user != null) {
             for (role in user.getRoles()!!) {

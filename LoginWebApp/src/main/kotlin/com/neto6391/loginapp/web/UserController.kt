@@ -5,12 +5,14 @@ import com.neto6391.loginapp.services.SecurityService
 import com.neto6391.loginapp.services.UserService
 import com.neto6391.loginapp.validator.UserValidator
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.authentication.InternalAuthenticationServiceException
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 
 
 @Controller
@@ -54,6 +56,7 @@ class UserController {
 
     @GetMapping("/login")
     fun login(model: Model, error: String?, logout: String?): String {
+
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.")
 
@@ -62,6 +65,17 @@ class UserController {
 
         return "login"
     }
+
+    @PostMapping("/login")
+    fun login(@RequestBody data:User?):String {
+                    if(data != null) {
+                println(data.getUsername())
+            }
+
+
+        return "login"
+    }
+
 
     @GetMapping("/", "/welcome")
     fun welcome(model: Model): String {

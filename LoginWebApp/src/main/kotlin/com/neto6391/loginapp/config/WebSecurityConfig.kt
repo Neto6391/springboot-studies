@@ -1,5 +1,6 @@
 package com.neto6391.loginapp.config
 
+import com.neto6391.loginapp.security.AuthProviderService
 import com.neto6391.loginapp.services.UserDetailsServiceImpl
 import org.springframework.context.annotation.Bean
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
@@ -16,12 +17,15 @@ import org.springframework.security.core.userdetails.UserDetailsService
 @EnableWebSecurity
 class WebSecurityConfig() : WebSecurityConfigurerAdapter() {
 
-    @Autowired lateinit var userDetailsService: UserDetailsService
+//    @Autowired lateinit var userDetailsService: UserDetailsService
+    @Autowired lateinit var authenticationProviderService: AuthProviderService
 
     @Bean
     fun bCryptPasswordEncoder(): BCryptPasswordEncoder {
         return BCryptPasswordEncoder()
     }
+
+
 
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
@@ -32,22 +36,24 @@ class WebSecurityConfig() : WebSecurityConfigurerAdapter() {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .usernameParameter("username").passwordParameter("password")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll()
     }
 
-    @Bean
-    @Throws(Exception::class)
-    fun customAuthenticationManager(): AuthenticationManager {
-        return authenticationManager()
-    }
+//    @Bean
+//    @Throws(Exception::class)
+//    fun CustomAuthenticationManager(): AuthenticationManager {
+//        return CustomAuthenticationManager(bCryptPasswordEncoder())
+//    }
 
     @Autowired
     @Throws(Exception::class)
     fun configureGlobal(auth: AuthenticationManagerBuilder) {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder())
+//        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder())
+        auth.authenticationProvider(authenticationProviderService)
     }
 
 }
