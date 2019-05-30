@@ -12,7 +12,7 @@ import java.util.*
 class UsersServiceImpl(
         private val usersRepository: UsersRepository
 ) : UsersService {
-    override fun createUsers(userDetails: UserDto): UserDto? {
+    override fun createUsers(userDetails: UserDto): UserDto {
         //Generate Random Unique User Id
         userDetails.setUserId(UUID.randomUUID().toString())
 
@@ -28,7 +28,9 @@ class UsersServiceImpl(
         //Save data in db
         usersRepository.save(userEntity)
 
-        return null
+        val returnValue = modelMapper.map(userEntity, UserDto::class.java)
+
+        return returnValue
     }
 
 }
