@@ -4,6 +4,7 @@ import com.appsdeveloperblog.photoapp.api.users.ui.model.CreateUserRequestModel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.env.Environment
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/users")
@@ -18,7 +19,7 @@ class UsersController {
     }
 
     @PostMapping
-    fun createUser(@RequestBody users:CreateUserRequestModel):String {
+    fun createUser(@Valid @RequestBody users:CreateUserRequestModel):String {
         return "Create user method is called"
     }
 
